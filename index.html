@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نتيجة الدور الثاني 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Almarai:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEEBE2;
+    --paper-2:#E4E0D4;
+    --ink:#20262B;
+    --navy:#173049;
+    --navy-2:#0E2033;
+    --gold:#A9812F;
+    --gold-light:#C7A24F;
+    --green:#2E6B4E;
+    --red:#A13A3A;
+    --line:#C9C3B3;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(23,48,73,0.06) 1px, transparent 0);
+    background-size: 22px 22px;
+    color:var(--ink);
+    font-family:'Almarai', sans-serif;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  header{
+    width:100%;
+    background:var(--navy);
+    background-image:linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
+    color:#F3EFE4;
+    padding:28px 16px 22px;
+    text-align:center;
+    border-bottom:4px solid var(--gold);
+  }
+  header .eyebrow{
+    font-size:13px;
+    letter-spacing:0.5px;
+    color:var(--gold-light);
+    margin-bottom:6px;
+    font-weight:700;
+  }
+  header h1{
+    font-family:'Tajawal', sans-serif;
+    font-weight:800;
+    font-size:clamp(22px, 4vw, 32px);
+    margin:0;
+  }
+  header p{
+    margin:8px 0 0;
+    font-size:14px;
+    color:#C7CDD4;
+  }
+
+  main{
+    width:100%;
+    max-width:620px;
+    padding:32px 18px 60px;
+    flex:1;
+  }
+
+  .search-card{
+    background:#F7F5EE;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:26px;
+    box-shadow:0 1px 0 rgba(23,48,73,0.05);
+    position:relative;
+  }
+  .search-card::before{
+    content:"";
+    position:absolute;
+    top:0; right:0; left:0;
+    height:3px;
+    background:repeating-linear-gradient(90deg, var(--gold) 0 10px, transparent 10px 20px);
+  }
+
+  .search-card label{
+    display:block;
+    font-family:'Tajawal', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    margin-bottom:10px;
+    color:var(--navy);
+  }
+
+  .search-row{
+    display:flex;
+    gap:10px;
+  }
+  #seat-input{
+    flex:1;
+    font-family:'Tajawal', sans-serif;
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:2px;
+    padding:12px 14px;
+    border:2px solid var(--navy);
+    border-radius:4px;
+    background:#fff;
+    color:var(--navy);
+    text-align:center;
+  }
+  #seat-input:focus{
+    outline:3px solid var(--gold-light);
+    outline-offset:1px;
+  }
+  #search-btn{
+    font-family:'Tajawal', sans-serif;
+    font-weight:700;
+    font-size:17px;
+    padding:0 26px;
+    background:var(--navy);
+    color:#F3EFE4;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+    transition:background .15s ease;
+  }
+  #search-btn:hover{background:var(--navy-2);}
+  #search-btn:active{transform:translateY(1px);}
+
+  .hint{
+    margin-top:10px;
+    font-size:13px;
+    color:#5C6672;
+  }
+
+  #result-area{margin-top:26px;}
+
+  .result-card{
+    background:#FBFAF5;
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+    animation:fadein .25s ease;
+  }
+  @keyframes fadein{
+    from{opacity:0; transform:translateY(6px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  .result-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:14px;
+    padding:20px 22px;
+    border-bottom:1px dashed var(--line);
+  }
+  .result-head .name{
+    font-family:'Tajawal', sans-serif;
+    font-weight:800;
+    font-size:20px;
+    color:var(--navy);
+    line-height:1.4;
+  }
+  .result-head .seat{
+    font-size:13px;
+    color:#5C6672;
+    margin-top:4px;
+    letter-spacing:1px;
+  }
+
+  .stamp{
+    flex-shrink:0;
+    font-family:'Tajawal', sans-serif;
+    font-weight:800;
+    font-size:14px;
+    padding:8px 14px;
+    border:3px solid;
+    border-radius:8px;
+    transform:rotate(-6deg);
+    white-space:nowrap;
+  }
+  .stamp.pass{color:var(--green); border-color:var(--green);}
+  .stamp.fail{color:var(--red); border-color:var(--red);}
+  .stamp.absent{color:#6B6255; border-color:#6B6255;}
+
+  .subjects{
+    padding:16px 22px 4px;
+  }
+  .subjects table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+  }
+  .subjects th, .subjects td{
+    text-align:center;
+    padding:9px 6px;
+    border-bottom:1px solid var(--paper-2);
+  }
+  .subjects th{
+    font-family:'Tajawal', sans-serif;
+    color:var(--navy);
+    font-weight:700;
+    font-size:13px;
+  }
+
+  .total-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 22px 20px;
+  }
+  .total-row .label{
+    font-size:14px;
+    color:#5C6672;
+  }
+  .total-row .value{
+    font-family:'Tajawal', sans-serif;
+    font-weight:800;
+    font-size:26px;
+    color:var(--navy);
+  }
+
+  .not-found{
+    background:#FBFAF5;
+    border:1px solid var(--line);
+    border-right:4px solid var(--red);
+    border-radius:4px;
+    padding:18px 20px;
+    font-size:14px;
+    color:var(--ink);
+  }
+  .not-found strong{color:var(--red);}
+
+  footer{
+    font-size:12px;
+    color:#8A8375;
+    padding:18px;
+    text-align:center;
+  }
+
+  @media (max-width:420px){
+    .search-row{flex-direction:column;}
+    #search-btn{padding:12px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">نظام الاستعلام عن النتيجة</div>
+  <h1>نتيجة البحث — الدور الثاني 2026</h1>
+  <p>ادخل رقم الجلوس لعرض النتيجة</p>
+</header>
+
+<main>
+  <div class="search-card">
+    <label for="seat-input">رقم الجلوس</label>
+    <div class="search-row">
+      <input id="seat-input" type="tel" inputmode="numeric" placeholder="مثال: 2312453" autofocus>
+      <button id="search-btn">بحث</button>
+    </div>
+    <div class="hint">اضغط Enter أو زرار بحث بعد كتابة الرقم</div>
+  </div>
+
+  <div id="result-area"></div>
+</main>
+
+<footer>عدد السجلات المتاحة للبحث: <span id="count"></span></footer>
+
+<script src="data.js"></script>
+<script>
+  document.getElementById('count').textContent = Object.keys(DATA).length.toLocaleString('ar-EG');
+
+  const input = document.getElementById('seat-input');
+  const btn = document.getElementById('search-btn');
+  const resultArea = document.getElementById('result-area');
+
+  function caseInfo(code){
+    const text = CASE_MAP[code] ? CASE_MAP[code].trim() : '';
+    if(code === 0) return {text, cls:'pass'};
+    if(code === 1) return {text, cls:'fail'};
+    return {text: text || 'غياب كلي', cls:'absent'};
+  }
+
+  function render(seat){
+    resultArea.innerHTML = '';
+    const rec = DATA[String(seat)];
+
+    if(!rec){
+      resultArea.innerHTML = `
+        <div class="not-found">
+          لا توجد نتيجة لرقم الجلوس <strong>${seat}</strong>. تأكد من الرقم وحاول مرة أخرى.
+        </div>`;
+      return;
+    }
+
+    const [name, total, caseCode, s1, s10, s14] = rec;
+    const info = caseInfo(caseCode);
+    const hasSubjects = s1 !== undefined;
+
+    let subjectsHtml = '';
+    if(hasSubjects){
+      subjectsHtml = `
+        <div class="subjects">
+          <table>
+            <thead>
+              <tr><th>مادة (1)</th><th>مادة (10)</th><th>مادة (14)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>${s1}</td><td>${s10}</td><td>${s14}</td></tr>
+            </tbody>
+          </table>
+        </div>`;
+    }
+
+    resultArea.innerHTML = `
+      <div class="result-card">
+        <div class="result-head">
+          <div>
+            <div class="name">${name}</div>
+            <div class="seat">رقم الجلوس: ${seat}</div>
+          </div>
+          <div class="stamp ${info.cls}">${info.text}</div>
+        </div>
+        ${subjectsHtml}
+        <div class="total-row">
+          <div class="label">المجموع الكلي</div>
+          <div class="value">${total}</div>
+        </div>
+      </div>`;
+  }
+
+  function doSearch(){
+    const val = input.value.trim();
+    if(!val) return;
+    render(val);
+  }
+
+  btn.addEventListener('click', doSearch);
+  input.addEventListener('keydown', e => {
+    if(e.key === 'Enter') doSearch();
+  });
+</script>
+
+</body>
+</html>
